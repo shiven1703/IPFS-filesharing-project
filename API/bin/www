@@ -1,0 +1,17 @@
+const app = require('../app')
+const config = require('config')
+const databaseConnection = require('../db')
+const port = process.env.PORT || config.get('app.port')
+
+;(async () => {
+  databaseConnection()
+    .then(async () => {
+      console.log('Connected to database...')
+      app.listen(port, () => {
+        console.log(`Server started on port ${port}`)
+      })
+    })
+    .catch((err) => {
+      console.log(`Somthing went wrong while starting the server on port ${port}`)
+    })
+})()

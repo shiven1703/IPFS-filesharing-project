@@ -1,0 +1,1222 @@
+[
+  {
+    "type": "get",
+    "url": "/admin/requests",
+    "title": "File Requests",
+    "version": "1.0.0",
+    "name": "File_Requests",
+    "group": "Admin",
+    "description": "<p>Return all pending requests realted to file blocking &amp; unblocking for admin user</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>jwt token for admin</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>message from the server</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "data.requests",
+            "description": "<p>Admin details</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.requests.request_id",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.requests.file_id",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.requests.type",
+            "description": "<p>'Block' or 'Unblock'</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.requests.reason",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "data.requests.approvalStatus",
+            "description": "<p>-1 = decision_pedning || 1 = Approved || 0 = Rejected</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data.requests.file_details",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.requests.file_details.filename",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.requests.file_details.mimetype",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.requests.file_details.size",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.requests.file_details.uploadedOn",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.requests.file_details.lastDownloadedOn",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.requests.file_details.downloadUrl",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data.requests.user_details",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.requests.user_details.firstname",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.requests.user_details.lastname",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.requests.user_details.email",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n   {\n       \"msg\": \"Success\",\n       \"data\": {\n           \"requests\": [\n               {\n                   \"request_id\": \"62ae2db7783ae801f28e0db2\",\n                   \"file_id\": \"akjdbcshvbsjhvbsdvjsvhjs\",\n                   \"type\": \"Block\",\n                   \"reason\": \"svjkbsjkv\",\n                   \"approvalStatus\": -1,\n                   \"file_details\": {\n                       \"filename\": \"pic.jpg\",\n                       \"mimetype\": \"image/jpeg\",\n                       \"size\": \"211 KB\",\n                       \"uploadedOn\": \"Saturday, 18 June 2022\",\n                       \"lastDownloadedOn\": \"Saturday, 18 June 2022\",\n                       \"downloadUrl\": \"/JgMMqdApQSQTEjklI2Wc\"\n                   },\n                   \"user_details\": {\n                       \"firstname\": \"shivam\",\n                       \"lastname\": \"patel\",\n                       \"email\": \"shivam@gmail.com\"\n                   }\n               }\n           ]\n       }\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./components/Admin/index.js",
+    "groupTitle": "Admin"
+  },
+  {
+    "type": "post",
+    "url": "/admin/login",
+    "title": "Login",
+    "version": "1.0.0",
+    "name": "LoginAdmin",
+    "group": "Admin",
+    "body": [
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "email",
+        "description": ""
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "password",
+        "description": ""
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>message from the server</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data.user",
+            "description": "<p>Admin details</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.user_id",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.firstname",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.lastname",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.email",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.role",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.access_token",
+            "description": "<p>access token starts with &quot;Bearer &quot;</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"msg\": \"Login Successful\",\n  \"data\": {\n     \"user\": {\n        \"user_id\": \"629d1871b031f552165a255f\",\n        \"firstname\": \"Admin\",\n        \"lastname\": \"Admin\",\n        \"email\": \"admin@gmail.com\",\n        \"role\": \"Admin\",\n        \"access_token\": \"Bearer eyJhbGciOiJIUzI...\"\n     }\n   }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Bad Request 400": [
+          {
+            "group": "Bad Request 400",
+            "optional": false,
+            "field": "InvalidJSON",
+            "description": "<p>Incoming json payload is invalid</p>"
+          }
+        ],
+        "Unauthorized 401": [
+          {
+            "group": "Unauthorized 401",
+            "optional": false,
+            "field": "InvalidCredentials",
+            "description": "<p>Wrong email or password</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "General-Response:",
+          "content": "{\n  \"error\": \"error message\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./components/Admin/index.js",
+    "groupTitle": "Admin"
+  },
+  {
+    "type": "post",
+    "url": "/admin/request/process",
+    "title": "Request Processing",
+    "version": "1.0.0",
+    "name": "Request_Processing",
+    "group": "Admin",
+    "description": "<p>Approve or Decline file request</p>",
+    "body": [
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "request_id",
+        "description": ""
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "operation",
+        "description": "<p>&quot;Approve&quot; or &quot;Decline&quot;</p>"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>jwt token for admin</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>message from the server</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n   {\n       \"msg\": \"Success\",\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Bad Request 400": [
+          {
+            "group": "Bad Request 400",
+            "optional": false,
+            "field": "InvalidFileId",
+            "description": "<p>Invalid file id received</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "General-Response:",
+          "content": "{\n  \"error\": \"error message\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./components/Admin/index.js",
+    "groupTitle": "Admin"
+  },
+  {
+    "type": "post",
+    "url": "/file/request",
+    "title": "Block-Unblock request",
+    "version": "1.0.0",
+    "name": "Block-Unblock_Request",
+    "group": "File",
+    "description": "<p>use this endpoint to add file block or unblock request</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>jwt of normal user</p>"
+          }
+        ]
+      }
+    },
+    "body": [
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "file_id",
+        "description": ""
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "request_type",
+        "description": "<p>takes &quot;Block&quot; or &quot;Unblock&quot; as param</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "reason",
+        "description": "<p>reason for request</p>"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>message from the server</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"msg\": \"Request successfully added\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Bad Request 400": [
+          {
+            "group": "Bad Request 400",
+            "optional": false,
+            "field": "MissingParam",
+            "description": "<p>missing request params</p>"
+          }
+        ],
+        "Conflict 409": [
+          {
+            "group": "Conflict 409",
+            "optional": false,
+            "field": "DuplicateFileRequest",
+            "description": "<p>Request already added for this file</p>"
+          }
+        ],
+        "Not Found 404": [
+          {
+            "group": "Not Found 404",
+            "optional": false,
+            "field": "InvalidFileId",
+            "description": "<p>invalid file_id supplied</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "General-Response:",
+          "content": "{\n  \"error\": \"error message\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./components/File/index.js",
+    "groupTitle": "File"
+  },
+  {
+    "type": "get",
+    "url": "/file/download/fileDownloadString",
+    "title": "Download File",
+    "version": "1.0.0",
+    "name": "Download_File",
+    "group": "File",
+    "description": "<p>This request will require &quot;relay&quot; cookie.</p>",
+    "query": [
+      {
+        "group": "Query",
+        "optional": false,
+        "field": "fileDownloadString",
+        "description": "<p>the file download url string</p>"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Not Found 404": [
+          {
+            "group": "Not Found 404",
+            "optional": false,
+            "field": "InvalidDownloadURL",
+            "description": "<p>file cannot be found due to invalid download url</p>"
+          }
+        ],
+        "Forbidden 403": [
+          {
+            "group": "Forbidden 403",
+            "optional": false,
+            "field": "FileBlocked",
+            "description": "<p>Cannot download file. The current file status is &quot;Blocked&quot;</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "General-Response:",
+          "content": "{\n  \"error\": \"error message\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./components/File/index.js",
+    "groupTitle": "File"
+  },
+  {
+    "type": "post",
+    "url": "/file/upload",
+    "title": "File Upload",
+    "version": "1.0.0",
+    "name": "Fileupload",
+    "group": "File",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>Bearer token ...it starts with &quot;Bearer &quot; prehold text and then jwt token</p>"
+          }
+        ]
+      }
+    },
+    "body": [
+      {
+        "group": "Body",
+        "type": "File",
+        "optional": false,
+        "field": "files",
+        "description": "<p>a multipart form field with name &quot;files&quot;</p>"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>message from the server</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "data.files",
+            "description": "<p>file details</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.files.filename",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.files.downloadUrl",
+            "description": "<p>download url of uploaded file</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n       \"msg\": \"Files uploaded\",\n       \"data\": {\n           \"files\": [\n               {\n                   \"filename\": \"pdf-test.pdf\",\n                   \"downloadUrl\": \"localhost:4000/file/download/ASx2mlt0p82Jw4RLnGsU\"\n               },\n               {\n                   \"filename\": \"pic.jpg\",\n                   \"downloadUrl\": \"localhost:4000/file/download/MSwSKj812rqlkTkwVIap\"\n               }\n           ]\n       }\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "BAD REQUEST 400": [
+          {
+            "group": "BAD REQUEST 400",
+            "optional": false,
+            "field": "MissingFileParam",
+            "description": "<p>Missing file field</p>"
+          }
+        ],
+        "Conflict 409": [
+          {
+            "group": "Conflict 409",
+            "optional": false,
+            "field": "DuplicateFile",
+            "description": "<p>Cannot upload the same file again</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "General-Response:",
+          "content": "{\n  \"error\": \"error message\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./components/File/index.js",
+    "groupTitle": "File"
+  },
+  {
+    "type": "get",
+    "url": "/file/view/fileDownloadString",
+    "title": "View File - Metadata",
+    "version": "1.0.0",
+    "name": "View_File_-_Metadata",
+    "group": "File",
+    "description": "<p>On successful response...server will send a &quot;Set-Cookie&quot; header with the cookie name relay. This cookie is required while downloading the file and to mainly avoid hotlink download of the file.</p>",
+    "query": [
+      {
+        "group": "Query",
+        "optional": false,
+        "field": "fileDownloadString",
+        "description": "<p>the file download url string</p>"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>message from the server</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data.file",
+            "description": "<p>file details</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.file.file_id",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.file.filename",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.file.mimetype",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.file.size",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.file.uploadedOn",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.file.status",
+            "description": "<p>&quot;Blocked&quot; or &quot;Unblocked&quot;</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"msg\": \"\",\n  \"data\": {\n     \"file\": {\n        \"file_id\": \"sdjkvskdvbkvjsdbvksdvsdjkvwbsd\",\n        \"filename\": \"test.pdf\",\n        \"mimetype\": \"application/pdf\",\n        \"size\": \"20 KB\",\n        \"uploadedOn\": \"20 July 2022\",\n        \"status\": \"Blocked\"\n     }\n   }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Not Found 404": [
+          {
+            "group": "Not Found 404",
+            "optional": false,
+            "field": "InvalidDownloadURL",
+            "description": "<p>file cannot be found due to invalid download url</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "General-Response:",
+          "content": "{\n  \"error\": \"error message\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./components/File/index.js",
+    "groupTitle": "File"
+  },
+  {
+    "type": "delete",
+    "url": "/user/file/file_id",
+    "title": "Delete File",
+    "version": "1.0.0",
+    "name": "Delete_File",
+    "group": "User",
+    "description": "<p>Will delete user file.</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>JWT</p>"
+          }
+        ]
+      }
+    },
+    "query": [
+      {
+        "group": "Query",
+        "optional": false,
+        "field": "file_id",
+        "description": ""
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>message from the server</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"msg\": \"Success\",\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Not Found 400": [
+          {
+            "group": "Not Found 400",
+            "optional": false,
+            "field": "InvalidFileId",
+            "description": "<p>Invalid file_id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "General-Response:",
+          "content": "{\n  \"error\": \"error message\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./components/User/index.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "get",
+    "url": "/user/files",
+    "title": "Uploaded-Files",
+    "version": "1.0.0",
+    "name": "FileRequests",
+    "group": "User",
+    "description": "<p>Returns all files which are uploaded by user</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>JWT</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>message from the server</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "data.files",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.files.file_id",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.files.filename",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.files.mimetype",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.files.size",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.files.uploadedOn",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.files.downloadUrl",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"msg\": \"Success\",\n  \"data\": {\n     \"files\": [\n                   {\n                       \"file_id\": \"62b200946011df31982005e1\",\n                       \"filename\": \"pic.jpg\",\n                       \"mimetype\": \"image/jpeg\",\n                       \"size\": \"211 KB\",\n                       \"uploadedOn\": \"Tuesday, 21 June 2022\",\n                       \"downloadUrl\": \"/Ff42FxbHWzY0StvxVJkV\"\n                   },\n                   {\n                       \"file_id\": \"62b2070eefb25ea0acaedb45\",\n                       \"filename\": \"pdf-test.pdf\",\n                       \"mimetype\": \"application/pdf\",\n                       \"size\": \"20 KB\",\n                       \"uploadedOn\": \"Tuesday, 21 June 2022\",\n                       \"downloadUrl\": \"/bsCuNOQT880vufSmmeKi\"\n                   }\n           ]\n       }\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./components/User/index.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "post",
+    "url": "/user/login",
+    "title": "Login",
+    "version": "1.0.0",
+    "name": "LoginUser",
+    "group": "User",
+    "body": [
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "email",
+        "description": ""
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "password",
+        "description": ""
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>message from the server</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data.user",
+            "description": "<p>newly created user details</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.user_id",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.firstname",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.lastname",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.email",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.role",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.access_token",
+            "description": "<p>access token starts with &quot;Bearer &quot;</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"msg\": \"Login Successful\",\n  \"data\": {\n     \"user\": {\n        \"user_id\": \"629d1871b031f552165a255f\",\n        \"firstname\": \"Shivam\",\n        \"lastname\": \"Patel\",\n        \"email\": \"shivam@gmail.com\",\n        \"role\": \"Normal\",\n        \"access_token\": \"Bearer eyJhbGciOiJIUzI...\"\n     }\n   }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Bad Request 400": [
+          {
+            "group": "Bad Request 400",
+            "optional": false,
+            "field": "InvalidJSON",
+            "description": "<p>Incoming json payload is invalid</p>"
+          }
+        ],
+        "Unauthorized 401": [
+          {
+            "group": "Unauthorized 401",
+            "optional": false,
+            "field": "InvalidCredentials",
+            "description": "<p>Wrong email or password</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "General-Response:",
+          "content": "{\n  \"error\": \"error message\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./components/User/index.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "post",
+    "url": "/user",
+    "title": "Registration",
+    "version": "1.0.0",
+    "name": "RegisterUser",
+    "group": "User",
+    "body": [
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "firstname",
+        "description": ""
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "lastname",
+        "description": ""
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "email",
+        "description": ""
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "password",
+        "description": ""
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "role",
+        "description": "<p>Normal OR Admin</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": true,
+        "field": "autoLogin",
+        "defaultValue": "false",
+        "description": "<p>in case value passed is true, then after user creation access_token will be provided by performing automatic login.</p>"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 201": [
+          {
+            "group": "Success 201",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>message from the server</p>"
+          },
+          {
+            "group": "Success 201",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": ""
+          },
+          {
+            "group": "Success 201",
+            "type": "Object",
+            "optional": false,
+            "field": "data.user",
+            "description": "<p>newly created user details</p>"
+          },
+          {
+            "group": "Success 201",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.user_id",
+            "description": ""
+          },
+          {
+            "group": "Success 201",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.firstname",
+            "description": ""
+          },
+          {
+            "group": "Success 201",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.lastname",
+            "description": ""
+          },
+          {
+            "group": "Success 201",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.email",
+            "description": ""
+          },
+          {
+            "group": "Success 201",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.role",
+            "description": ""
+          },
+          {
+            "group": "Success 201",
+            "type": "String",
+            "optional": false,
+            "field": "data.user.access_token",
+            "description": "<p>available only if autoLogin is passed as true</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 Created\n{\n  \"msg\": \"User created\",\n  \"data\": {\n     \"user\": {\n        \"user_id\": \"629d1871b031f552165a255f\",\n        \"firstname\": \"Shivam\",\n        \"lastname\": \"Patel\",\n        \"email\": \"shivam@gmail.com\",\n        \"role\": \"Normal\",\n        \"access_token\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2...\"\n     }\n   }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Bad Request 400": [
+          {
+            "group": "Bad Request 400",
+            "optional": false,
+            "field": "InvalidJSON",
+            "description": "<p>Incoming json payload is invalid</p>"
+          },
+          {
+            "group": "Bad Request 400",
+            "optional": false,
+            "field": "InvalidUserRole",
+            "description": "<p>user role in request payload is invalid</p>"
+          }
+        ],
+        "Conflict 409": [
+          {
+            "group": "Conflict 409",
+            "optional": false,
+            "field": "UserAlreadyExist",
+            "description": "<p>user with same email address already exist in the database</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "General-Response:",
+          "content": "{\n  \"error\": \"error message\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./components/User/index.js",
+    "groupTitle": "User"
+  }
+]

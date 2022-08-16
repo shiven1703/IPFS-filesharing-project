@@ -1,0 +1,53 @@
+version: '3.7'
+
+services:
+
+  database:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - database:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE:Databanken
+      - MONGO_INITDB_ROOT_USERNAME:shivam
+      - MONGO_INITDB_ROOT_PASSWORD:O6hvhbcSyrkTByTt
+
+  importdatabase:
+    image: mongo
+    links:
+      - database
+    volumes:
+      - ./API/database_import:/data_import
+    command:
+      /data_import/import.sh
+
+  cacheDB:
+    image: redis:7.0-alpine
+    ports:
+      - 6379:6379
+
+  ipfs_host:
+    image: ipfs/kubo
+    volumes:
+      - ./API/Ipfs/ipfs_staging:/export
+      - ./API/Ipfs/ipfs_staging/ipfs_data:/data/ipfs
+    ports:
+      - 4001:4001
+      - 4001:4001/udp
+      - 127.0.0.1:8080:8080
+      - 127.0.0.1:5001:5001
+
+  node-api:
+    build: ./API
+    ports:
+      - 4000:4000
+  
+  frontend:
+    build: ./Frontend
+    ports:
+      - 3000:3000
+    
+volumes:
+  database:

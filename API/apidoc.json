@@ -1,0 +1,10 @@
+{
+    "name": "Databanken Project API",
+    "version": "1.0.0",
+    "description": "This API contains all endpoints for databanken project",
+    "title": "Databanken Project API",
+    "url": "http://localhost:4000",
+    "template": {
+      "showRequiredLabels": true
+    }
+  }
