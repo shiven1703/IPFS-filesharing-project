@@ -1,6 +1,6 @@
-# Databanken-Project
+# IPFS-filesharing-project
 
-Repo for databanken project
+This project uses IPFS network to allow file-sharing.
 
 # Guide
 
@@ -35,6 +35,7 @@ Repo for databanken project
 
    - Frontend on : localhost:3000
    - Backendon : localhost:4000
+   - Docs : localhost:4000/docs
    - Database : localhost: 27017
 
 Note: you can also connected to MongoDB database on localhost:27017 (using compass or shell)
